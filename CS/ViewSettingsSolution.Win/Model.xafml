@@ -1,0 +1,3 @@
+﻿<Application Logo="ExpressAppLogo">
+  <Options Skin="Office 2010 Blue" UIType="TabbedMDI" />
+</Application>
