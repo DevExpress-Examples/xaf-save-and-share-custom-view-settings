@@ -81,6 +81,7 @@ namespace ViewSettingsSolution.Module.Controllers {
                 IObjectSpace os = currentLayoutItem.ObjectSpace;
                 os.Delete(currentLayoutItem);
                 os.CommitChanges();
+                isDefaultViewSelected = true;
                 UpdateActions(null);
             }
         }
