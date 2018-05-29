@@ -83,6 +83,7 @@ Namespace ViewSettingsSolution.Module.Controllers
                 Dim os As IObjectSpace = currentLayoutItem.ObjectSpace
                 os.Delete(currentLayoutItem)
                 os.CommitChanges()
+                isDefaultViewSelected = True
                 UpdateActions(Nothing)
             End If
         End Sub
