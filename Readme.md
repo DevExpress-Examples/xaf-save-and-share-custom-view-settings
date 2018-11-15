@@ -1,3 +1,9 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [SettingsStore.cs](./CS/ViewSettingsSolution.Module/BusinessObjects/SettingsStore.cs) (VB: [SettingsStore.vb](./VB/ViewSettingsSolution.Module/BusinessObjects/SettingsStore.vb))
+* **[ViewVariantsController.cs](./CS/ViewSettingsSolution.Module/Controllers/ViewVariantsController.cs) (VB: [ViewVariantsController.vb](./VB/ViewSettingsSolution.Module/Controllers/ViewVariantsController.vb))**
+<!-- default file list end -->
 # How to save and share custom view settings
 
 
