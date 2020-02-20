@@ -11,7 +11,7 @@ Namespace ViewSettingsSolution.Win
     Partial Public Class ViewSettingsSolutionWindowsFormsApplication
         Inherits WinApplication
 
-        #Region "Default XAF configuration options (https:" 'www.devexpress.com/kb=T501418)
+#Region "Default XAF configuration options (https:" 'www.devexpress.com/kb=T501418)
         Shared Sub New()
             DevExpress.Persistent.Base.PasswordCryptographer.EnableRfc2898 = True
             DevExpress.Persistent.Base.PasswordCryptographer.SupportLegacySha512 = False
@@ -19,8 +19,10 @@ Namespace ViewSettingsSolution.Win
         Private Sub InitializeDefaults()
             LinkNewObjectToParentImmediately = False
             OptimizedControllersCreation = True
+            UseLightStyle = True
+            ExecuteStartupLogicBeforeClosingLogonWindow = True
         End Sub
-        #End Region
+#End Region
         Public Sub New()
             InitializeComponent()
             InitializeDefaults()
