@@ -29,15 +29,25 @@ namespace ViewSettingsSolution.Module.Controllers {
             Boolean result = false;
             View savedView = Frame.View;
             isLayoutProcessed = true;
-            if(Frame.SetView(null, true, null, false)) {
-                if(isDefaultViewSelected) {
-                    UpdateDefaultSettings(savedView.Model);
-                    isDefaultViewSelected = false;
+            foreach(ISupportUpdate controller in Frame.Controllers) {
+               // controller.BeginUpdate();
+            }
+            try {
+                if(Frame.SetView(null, true, null, false)) {
+                    if(isDefaultViewSelected) {
+                        UpdateDefaultSettings(savedView.Model);
+                        isDefaultViewSelected = false;
+                    }
+                    SetDifferences(xml, savedView.Model);
+                    savedView.LoadModel(false);
+                    Frame.SetView(savedView);
+                    result = true;
                 }
-                SetDifferences(xml, savedView.Model);
-                savedView.LoadModel(false);
-                Frame.SetView(savedView);
-                result = true;
+            }
+            finally {
+                foreach(ISupportUpdate controller in Frame.Controllers) {
+                  //  controller.EndUpdate();
+                }
             }
             isLayoutProcessed = false;
             return result;
@@ -107,8 +117,7 @@ namespace ViewSettingsSolution.Module.Controllers {
                 if(TryLoadViewVariantFromXML(((SettingsStore)currentItem.Data).Xml)) {
                     isVariantChanged = true;
                 }
-            }
-            else {
+            } else {
                 if(TryLoadViewVariantFromXML(defaultUserSettings)) {
                     isDefaultViewSelected = true;
                     isVariantChanged = true;
@@ -159,7 +168,7 @@ namespace ViewSettingsSolution.Module.Controllers {
             this.UpdateCurrentViewVariantAction = new SimpleAction(this, "UpdateCurrentViewVariant", "Edit");
             this.UpdateCurrentViewVariantAction.Execute += new SimpleActionExecuteEventHandler(this.UpdateCurrentViewVariantAction_Execute);
 
-            this.UpdateDefaultSettingsWithSelectedVariantAction  = new SimpleAction(this, "UpdateDefaultViewVariant", "Edit");
+            this.UpdateDefaultSettingsWithSelectedVariantAction = new SimpleAction(this, "UpdateDefaultViewVariant", "Edit");
             UpdateDefaultSettingsWithSelectedVariantAction.Execute += UpdateDefaultSettingsWithSelectedVariantAction_Execute;
 
             this.Actions.Add(this.DeleteViewVariantAction);

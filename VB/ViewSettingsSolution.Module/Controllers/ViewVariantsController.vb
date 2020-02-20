@@ -31,16 +31,25 @@ Namespace ViewSettingsSolution.Module.Controllers
             Dim result As Boolean = False
             Dim savedView As View = Frame.View
             isLayoutProcessed = True
-            If Frame.SetView(Nothing, True, Nothing, False) Then
-                If isDefaultViewSelected Then
-                    UpdateDefaultSettings(savedView.Model)
-                    isDefaultViewSelected = False
+            For Each controller As ISupportUpdate In Frame.Controllers
+                controller.BeginUpdate()
+            Next
+            Try
+                If Frame.SetView(Nothing, True, Nothing, False) Then
+                    If isDefaultViewSelected Then
+                        UpdateDefaultSettings(savedView.Model)
+                        isDefaultViewSelected = False
+                    End If
+                    SetDifferences(xml, savedView.Model)
+                    savedView.LoadModel(False)
+                    Frame.SetView(savedView)
+                    result = True
                 End If
-                SetDifferences(xml, savedView.Model)
-                savedView.LoadModel(False)
-                Frame.SetView(savedView)
-                result = True
-            End If
+            Finally
+                For Each controller As ISupportUpdate In Frame.Controllers
+                    controller.EndUpdate()
+                Next
+            End Try
             isLayoutProcessed = False
             Return result
         End Function
