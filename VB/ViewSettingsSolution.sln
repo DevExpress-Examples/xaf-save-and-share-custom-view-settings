@@ -1,8 +1,8 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ViewSettingsSolution.Module", "ViewSettingsSolution.Module\ViewSettingsSolution.Module.vbproj", "{1DEC7E4F-922F-4667-A4A7-54C0D1E896AE}"
-EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ViewSettingsSolution.Win", "ViewSettingsSolution.Win\ViewSettingsSolution.Win.vbproj", "{3883D999-A4BE-4EAE-8501-4436D4D77707}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ViewSettingsSolution.Module", "ViewSettingsSolution.Module\ViewSettingsSolution.Module.vbproj", "{1DEC7E4F-922F-4667-A4A7-54C0D1E896AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

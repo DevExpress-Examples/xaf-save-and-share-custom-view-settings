@@ -17,6 +17,8 @@ namespace ViewSettingsSolution.Win {
         private void InitializeDefaults() {
             LinkNewObjectToParentImmediately = false;
             OptimizedControllersCreation = true;
+            UseLightStyle = true;
+            ExecuteStartupLogicBeforeClosingLogonWindow = true;
         }
         #endregion
         public ViewSettingsSolutionWindowsFormsApplication() {
