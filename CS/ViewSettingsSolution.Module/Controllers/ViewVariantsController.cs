@@ -30,7 +30,7 @@ namespace ViewSettingsSolution.Module.Controllers {
             View savedView = Frame.View;
             isLayoutProcessed = true;
             foreach(ISupportUpdate controller in Frame.Controllers) {
-               // controller.BeginUpdate();
+                controller.BeginUpdate();
             }
             try {
                 if(Frame.SetView(null, true, null, false)) {
@@ -46,7 +46,7 @@ namespace ViewSettingsSolution.Module.Controllers {
             }
             finally {
                 foreach(ISupportUpdate controller in Frame.Controllers) {
-                  //  controller.EndUpdate();
+                    controller.EndUpdate();
                 }
             }
             isLayoutProcessed = false;
