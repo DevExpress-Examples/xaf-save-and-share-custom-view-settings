@@ -65,7 +65,7 @@ namespace ViewSettingsSolution.Module.Controllers {
         private void UpdateActions(string itemToSelectCaption) {
             SelectViewVariantAction.Items.Clear();
             lastSelectedItem = null;
-            CriteriaOperator criteria = CriteriaOperator.Parse("([ViewId] = ?) And ([IsShared] Or [OwnerId] is null Or [OwnerId] = ?)", View.Id, SecuritySystem.CurrentUserId);
+            CriteriaOperator criteria = CriteriaOperator.Parse("([ViewId] = ?) And ([IsShared] Or [OwnerId] is null Or [OwnerId] = ?)", View.Id, SecuritySystem.CurrentUserId.ToString());
             IObjectSpace objectSpace = Application.CreateObjectSpace(typeof(SettingsStore));
             foreach(SettingsStore item in objectSpace.GetObjects<SettingsStore>(criteria)) {
                 SelectViewVariantAction.Items.Add(new ChoiceActionItem(item.Name, item));

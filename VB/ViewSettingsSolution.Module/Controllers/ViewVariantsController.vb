@@ -66,7 +66,7 @@ Namespace ViewSettingsSolution.Module.Controllers
 		Private Sub UpdateActions(ByVal itemToSelectCaption As String)
 			SelectViewVariantAction.Items.Clear()
 			lastSelectedItem = Nothing
-			Dim criteria As CriteriaOperator = CriteriaOperator.Parse("([ViewId] = ?) And ([IsShared] Or [OwnerId] is null Or [OwnerId] = ?)", View.Id, SecuritySystem.CurrentUserId)
+			Dim criteria As CriteriaOperator = CriteriaOperator.Parse("([ViewId] = ?) And ([IsShared] Or [OwnerId] is null Or [OwnerId] = ?)", View.Id, SecuritySystem.CurrentUserId.ToString())
 			Dim objectSpace As IObjectSpace = Application.CreateObjectSpace(GetType(SettingsStore))
 			For Each item As SettingsStore In objectSpace.GetObjects(Of SettingsStore)(criteria)
 				SelectViewVariantAction.Items.Add(New ChoiceActionItem(item.Name, item))
