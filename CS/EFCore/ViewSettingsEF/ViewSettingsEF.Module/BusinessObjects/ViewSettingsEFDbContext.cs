@@ -36,6 +36,7 @@ public class ViewSettingsEFEFCoreDbContext : DbContext {
 	}
 	//public DbSet<ModuleInfo> ModulesInfo { get; set; }
 	public DbSet<Contact> Contact { get; set; }
+	public DbSet<SettingsStore> SettingsStore { get; set; }
 	public DbSet<ModelDifference> ModelDifferences { get; set; }
 	public DbSet<ModelDifferenceAspect> ModelDifferenceAspects { get; set; }
 	public DbSet<PermissionPolicyRole> Roles { get; set; }
