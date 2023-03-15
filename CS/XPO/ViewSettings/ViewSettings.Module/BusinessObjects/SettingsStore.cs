@@ -8,7 +8,7 @@ using System.ComponentModel;
 using DevExpress.Xpo;
 
 namespace ViewSettingsSolution.Module.BusinessObjects {
-    public class SettingsStore : BaseObject, IObjectSpaceLink {
+    public class SettingsStore : BaseObject {
         private string xml;
         private string name;
         private string ownerId;
@@ -25,7 +25,7 @@ namespace ViewSettingsSolution.Module.BusinessObjects {
                 return xml;
             }
             set {
-                SetPropertyValue("XML", ref xml, value);
+                SetPropertyValue(nameof(Xml), ref xml, value);
             }
         }
         public string Name {
@@ -33,36 +33,28 @@ namespace ViewSettingsSolution.Module.BusinessObjects {
                 return name;
             }
             set {
-                SetPropertyValue("Name", ref name, value);
+                SetPropertyValue(nameof(Name), ref name, value);
             }
         }
         [Browsable(false)]
         public string OwnerId {
             get { return ownerId; }
-            set { SetPropertyValue<string>("OwnerId", ref ownerId, value); }
+            set { SetPropertyValue(nameof(OwnerId), ref ownerId, value); }
         }
         public Boolean IsShared {
             get {
                 return isShared;
             }
             set {
-                SetPropertyValue("IsShared", ref isShared, value);
+                SetPropertyValue(nameof(IsShared), ref isShared, value);
             }
         }
         [Browsable(false)]
         public string ViewId {
             get { return viewId; }
-            set { SetPropertyValue<string>("ViewId", ref viewId, value); }
+            set { SetPropertyValue<string>(nameof(ViewId), ref viewId, value); }
         }
 
-        IObjectSpace IObjectSpaceLink.ObjectSpace {
-            get {
-                return objectSpace;
-            }
-
-            set {
-                objectSpace = value;
-            }
-        }
+       
     }
 }
