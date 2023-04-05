@@ -22,15 +22,15 @@ The example application uses a persistent class to store view settings in the da
 
 First, create the `SettingsStore` business class used to store the View settings. This class should have the following properties:  
 
-1. **Xml** - A string where serialized view settings are stored.
+1. `Xml` - A string where serialized view settings are stored.
 
-2. **Name** - The name of the view variant.
+2. `Name` - The name of the view variant.
 
-3. **OwnerId** - An identifier of the user who created this variant.
+3. `OwnerId` - An identifier of the user who created this variant.
 
-4. **IsShared** - Specifies whether this variant is shared with other users. 
+4. `IsShared` - Specifies whether this variant is shared with other users. 
 
-5. **ViewId** - An identifier of the view for which this variant is created.
+5. `ViewId` - An identifier of the view for which this variant is created.
 
 ### Add a Custom View Controller
 
@@ -52,7 +52,7 @@ Create a `ViewController` that defines the following behavior:
 
 In the example application, the actions that the `ViewVariantsController` controller implements look as follows:
 
-![](https://user-images.githubusercontent.com/14300209/225338143-2b4a470c-43ca-405e-83c0-eceb853c3946.png)
+![View Controller Actions in UI](https://user-images.githubusercontent.com/14300209/225338143-2b4a470c-43ca-405e-83c0-eceb853c3946.png)
 
 You can extend and adjust the demonstrated functionality based on your requirements. For example, you can:
 
