@@ -6,55 +6,59 @@
 
 # XAF - How to Save and Share Custom View Settings
 
-In XAF applications, View settings are stored in Model Differences individually for each user. When the user changes the View (e. g., adds a column to a List View or groups View Items in a Detail View layout), these settings are saved in the user's Model Differences and applied to this View the next time it is displayed.  
-The built-in [View Variants Module](https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113011.aspx) allows creating multiple predefined view settings using the Model Editor or in code and provides the end user with the capability to select a view variant at runtime.
+In XAF applications, view settings are stored for each user individually. When a user changes a view (for example, adds a column to a list view or groups a detail view's items), these settings are saved in the user's model differences and applied to this view the next time this view is displayed.  
+The built-in [View Variants Module](https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113011.aspx) allows you to create multiple predefined view settings in the Model Editor or in code. It also allows an end user to select a view variant at runtime.
 
-We want to provide the capability to save customized view settings as new view variants at runtime, share them, and allow any user having the corresponding permission to select a variant and apply these settings.
+This example implements functionality required to save customized view settings as new view variants at runtime, share them between users, and allow any user who has appropriate permissions to select a variant and apply its settings to a view.
 
 > **NOTE:**
-> The approach demonstrated in this example may be inappropriate or overly complicated for certain use cases. So, we cannot guarantee that it will work in all possible scenarios. Should you face any issue with this solution, please submit a separate ticket and describe your scenario in detail. Our R&D team will research your feedback to improve the functionality.
+> The approach demonstrated in this example may be inappropriate or overly complex for certain use cases. Thus, we cannot guarantee that it will work in all possible use case scenarios. Should you encounter any issues with this solution, please post a ticket with a detailed description of your scenario to the DevExpress [Support Center](https://github.com/DevExpress-Examples/How-to-create-a-multitenancy-application). Our R&D team will research your feedback to improve the described functionality.
 
 ## Implementation Details
 
-In this example, we use a persistent class to store view settings in the database and a view controller with actions to manage these settings (creating, applying and deleting). Each user can create his/her own view variants. Each view variant can be optionally marked as shared, so that other users can see and apply it to their views.
+The example application uses a persistent class to store view settings in the database and a view controller with actions used to manage these settings (create, apply and delete). Each user can create his/her own view variants. Each view variant can be optionally marked as _shared_, so that other users can see this variant in the UI and apply it to their views.
 
 ### Add a Persistent Class to Store View Settings
 
-First, create the `SettingsStore` class with the following properties to store the View settings:  
+First, create the `SettingsStore` business class used to store the View settings. This class should have the following properties:  
 
-1. **Xml** - a string where serialized view settings are stored;  
+1. **Xml** - A string where serialized view settings are stored.
 
-2. **Name** - the name of the View Variant;  
+2. **Name** - The name of the view variant.
 
-3. **OwnerId** - an identifier of the user who created this Variant;  
+3. **OwnerId** - An identifier of the user who created this variant.
 
-4. **IsShared** - specifies whether this Variant is shared with other users, or not; 
+4. **IsShared** - Specifies whether this variant is shared with other users. 
 
-5. **ViewId** - an identifier of the View for which this variant is created.
+5. **ViewId** - An identifier of the view for which this variant is created.
 
 ### Add a Custom View Controller
 
-Then, create the `ViewController`that defines the following behavior:  
+Create a `ViewController` that defines the following behavior:  
 
-1. There are Shared Model Settings available for each user, which cannot be edited by them.  
+1. The shared model settings are available to all users but cannot be edited by them.  
 
-2. Each user has his/her own default settings saved in the user's Model and used when there are no variants.
+2. Each user has his/her own default settings saved in the user's model and used when no variant is used.
 
-3. The **SaveAsNewViewVariant** action creates a new View Variant based on current view customizations. If this is the first Variant created for the view, two new Variants are created: a Variant that stores default settings (named "Default") and a Variant that stores customized view settings. If at least one Variant already exists, only the latter View Variant (with current customizations) is created. This variant becomes current. 
+3. The `SaveAsNewViewVariant` action creates a new view variant based on customizations made to the current view. The created variant is used as current. If this is the first variant created for the view, the action additionally creates a variant that stores the default settings (named "Default").
 
-4. The **SelectViewVariant** action makes the View Variant selected in the combo box current. This action is available when at least one variant exists. When the current View Variant is changed, customizations applied to the previous View Variant are lost. Only the "Default" View Variant customizations are saved in the Model when the current variant is changed.  
+4. The `SelectViewVariant` action makes the view variant selected in the combo box current. This action is available when at least one variant exists. When a user changes the current view variant, all customizations previously made to the view are lost, except for changes made to the "Default" view variant.  
 
-5. The **UpdateCurrentViewVariant** action saves customizations to the currently selected View Variant.  
+5. The `UpdateCurrentViewVariant` action saves customizations to the currently selected view variant.  
 
-6. The **DeleteViewVariant** action deletes the current View Variant. After deletion, the "Default" view variant becomes current and its settings are applied.  
+6. The `DeleteViewVariant` action deletes the current view variant. After deletion, the "Default" view variant becomes current and its settings are applied.  
 
-7. The **UpdateDefaultViewVariant** action saves customizations made to the current view in the "Default" Variant.
+7. The `UpdateDefaultViewVariant` action saves customizations made to the current view in the "Default" variant.
 
-Actions that the **ViewVariantsController** controller implements may look as follows:
+Actions that the `ViewVariantsController` controller implements may look as follows:
 
 ![](https://user-images.githubusercontent.com/14300209/225338143-2b4a470c-43ca-405e-83c0-eceb853c3946.png)
 
-This example demonstrates the basic functionality, which you can expand or customize according to your requirements. For example, you can prevent certain users from deleting View Variants using the [Security System](https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113361.aspx) facilities. Also, you can store the current Variant in the Model (see the [Extend and Customize the Application Model in Code](https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113169.aspx) topic in our documentation) or in a property of the user object and apply it when the corresponding View is opened.
+You can extend and adjust the demonstrated functionality based on your requirements. For example, you can:
+
+- Prevent certain users from deleting view variants using the [Security System](https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113361.aspx) facilities.
+
+- Store the current Variant in the Model (see the [Extend and Customize the Application Model in Code](https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113169.aspx) topic in our documentation) or in a property of the user object and apply it when the corresponding View is opened.
 
 ## Files to Review
 
