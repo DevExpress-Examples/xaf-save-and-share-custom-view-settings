@@ -40,27 +40,32 @@ Create a `ViewController` that defines the following behavior:
 
 2. Each user has his/her own default settings saved in the user's model and used when no variant is used.
 
-3. The `SaveAsNewViewVariant` action creates a new view variant based on customizations made to the current view. The created variant is used as current. If this is the first variant created for the view, the action additionally creates a variant that stores the default settings (named "Default").
+3. The `SaveAsNewViewVariant` action creates a new view variant based on customizations made to a view. The created variant is assigned as the _current_ variant. If this is the first variant created for the view, the action additionally creates a variant that stores the default settings (named "Default").
 
-4. The `SelectViewVariant` action makes the view variant selected in the combo box current. This action is available when at least one variant exists. When a user changes the current view variant, all customizations previously made to the view are lost, except for changes made to the "Default" view variant.  
+4. The `SelectViewVariant` action allows a user to select a view variant from a combo box and makes the selected variant _current_. This action is available when at least one variant exists. When a user changes the current view variant, all customizations previously made to the view are lost, except for changes made to the "Default" view variant.  
 
 5. The `UpdateCurrentViewVariant` action saves customizations to the currently selected view variant.  
 
-6. The `DeleteViewVariant` action deletes the current view variant. After deletion, the "Default" view variant becomes current and its settings are applied.  
+6. The `DeleteViewVariant` action deletes the current view variant. After deletion, the "Default" view variant becomes _current_ and its settings are applied.  
 
 7. The `UpdateDefaultViewVariant` action saves customizations made to the current view in the "Default" variant.
 
-Actions that the `ViewVariantsController` controller implements may look as follows:
+In the example application, the actions that the `ViewVariantsController` controller implements look as follows:
 
 ![](https://user-images.githubusercontent.com/14300209/225338143-2b4a470c-43ca-405e-83c0-eceb853c3946.png)
 
 You can extend and adjust the demonstrated functionality based on your requirements. For example, you can:
 
-- Prevent certain users from deleting view variants using the [Security System](https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113361.aspx) facilities.
+- Use the [Security System](https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113361.aspx) facilities to prohibit certain users to delete view variants.
 
-- Store the current Variant in the Model (see the [Extend and Customize the Application Model in Code](https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113169.aspx) topic in our documentation) or in a property of the user object and apply it when the corresponding View is opened.
+- Store the current variant in the model (see the [Extend and Customize the Application Model in Code](https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113169.aspx) topic in our documentation) or in the user object's property and apply it when the corresponding view is opened.
 
 ## Files to Review
 
 * [SettingsStore.cs](./CS/EFCore/ViewSettingsEF/ViewSettingsEF.Module/BusinessObjects/SettingsStore.cs)
 * [ViewVariantsController.cs](./CS/EFCore/ViewSettingsEF/ViewSettingsEF.Module/Controllers/ViewVariantsController.cs)
+
+## Documentation
+
+* [View Variants (Switch Document Layouts)](https://docs.devexpress.com/eXpressAppFramework/113011/application-shell-and-base-infrastructure/view-variants-module)
+* [How the XAF Application Model Works](https://docs.devexpress.com/eXpressAppFramework/112580/ui-construction/application-model-ui-settings-storage/how-application-model-works)
