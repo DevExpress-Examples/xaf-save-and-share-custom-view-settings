@@ -12,7 +12,7 @@ The built-in [View Variants Module](https://documentation.devexpress.com/eXpress
 This example implements functionality required to save customized view settings as new view variants at runtime, share them between users, and allow any user who has appropriate permissions to select a variant and apply its settings to a view.
 
 > **NOTE:**
-> The approach demonstrated in this example may be inappropriate or overly complex for certain use cases. Thus, we cannot guarantee that it will work in all possible use case scenarios. Should you encounter any issues with this solution, please post a ticket with a detailed description of your scenario to the DevExpress [Support Center](https://github.com/DevExpress-Examples/How-to-create-a-multitenancy-application). Our R&D team will research your feedback to improve the described functionality.
+> The approach demonstrated in this example may be inappropriate or overly complex in certain use cases. Thus, we cannot guarantee that it will work in all possible use case scenarios. Do not hesitate to modify it so it handles your business needs.
 
 ## Implementation Details
 
