@@ -16,7 +16,7 @@ This example implements functionality required to save customized view settings 
 
 ## Implementation Details
 
-The example application uses a persistent class to store view settings in the database and a view controller with actions used to manage these settings (create, apply and delete). Each user can create his/her own view variants. Each view variant can be optionally marked as _shared_, so that other users can see this variant in the UI and apply it to their views.
+The example application uses a persistent class to store view settings in the database and a view controller with actions used to manage these settings (create, apply, and delete). Each user can create his/her own view variants. Each view variant can be optionally marked as _shared_, so that other users can see this variant in the UI and apply it to their views.
 
 ### Add a Persistent Class to Store View Settings
 
@@ -50,13 +50,13 @@ Create a `ViewController` that defines the following behavior:
 
 7. The `UpdateDefaultViewVariant` action saves customizations made to the current view in the "Default" variant.
 
-In the example application, the actions that the `ViewVariantsController` controller implements look as follows:
+In the example application, the actions that `ViewVariantsController` implements look as follows:
 
 ![View Controller Actions in UI](https://user-images.githubusercontent.com/14300209/225338143-2b4a470c-43ca-405e-83c0-eceb853c3946.png)
 
 You can extend and adjust the demonstrated functionality based on your requirements. For example, you can:
 
-- Use the [Security System](https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113361.aspx) facilities to prohibit certain users to delete view variants.
+- Use the [Security System](https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113361.aspx) facilities to prohibit certain users from deleting view variants.
 
 - Store the current variant in the model (see the [Extend and Customize the Application Model in Code](https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113169.aspx) topic in our documentation) or in the user object's property and apply it when the corresponding view is opened.
 
