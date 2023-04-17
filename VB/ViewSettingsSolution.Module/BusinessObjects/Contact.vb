@@ -1,60 +1,66 @@
-﻿Imports System
-Imports System.Collections.Generic
-Imports System.Linq
-Imports System.Text
 Imports DevExpress.Persistent.Base
 Imports DevExpress.Xpo
 Imports DevExpress.Persistent.BaseImpl
 
 Namespace ViewSettingsSolution.Module.BusinessObjects
-    <DefaultClassOptions> _
+
+    <DefaultClassOptions>
     Public Class Contact
         Inherits BaseObject
 
+        Private webPageAddressField As String
 
-        Private webPageAddress_Renamed As String
+        Private nickNameField As String
 
-        Private nickName_Renamed As String
+        Private spouseNameField As String
 
-        Private spouseName_Renamed As String
+        Private titleOfCourtesyField As TitleOfCourtesy
 
-        Private titleOfCourtesy_Renamed As TitleOfCourtesy
         Public Sub New(ByVal session As Session)
             MyBase.New(session)
         End Sub
-        Public Property WebPageAddress() As String
+
+        Public Property WebPageAddress As String
             Get
-                Return webPageAddress_Renamed
+                Return webPageAddressField
             End Get
+
             Set(ByVal value As String)
-                SetPropertyValue("WebPageAddress", webPageAddress_Renamed, value)
+                SetPropertyValue("WebPageAddress", webPageAddressField, value)
             End Set
         End Property
-        Public Property NickName() As String
+
+        Public Property NickName As String
             Get
-                Return nickName_Renamed
+                Return nickNameField
             End Get
+
             Set(ByVal value As String)
-                SetPropertyValue("NickName", nickName_Renamed, value)
+                SetPropertyValue("NickName", nickNameField, value)
             End Set
         End Property
-        Public Property SpouseName() As String
+
+        Public Property SpouseName As String
             Get
-                Return spouseName_Renamed
+                Return spouseNameField
             End Get
+
             Set(ByVal value As String)
-                SetPropertyValue("SpouseName", spouseName_Renamed, value)
+                SetPropertyValue("SpouseName", spouseNameField, value)
             End Set
         End Property
-        Public Property TitleOfCourtesy() As TitleOfCourtesy
+
+        Public Property TitleOfCourtesy As TitleOfCourtesy
             Get
-                Return titleOfCourtesy_Renamed
+                Return titleOfCourtesyField
             End Get
+
             Set(ByVal value As TitleOfCourtesy)
-                SetPropertyValue("TitleOfCourtesy", titleOfCourtesy_Renamed, value)
+                SetPropertyValue("TitleOfCourtesy", titleOfCourtesyField, value)
             End Set
         End Property
     End Class
+
     Public Enum TitleOfCourtesy
         Dr
         Miss
