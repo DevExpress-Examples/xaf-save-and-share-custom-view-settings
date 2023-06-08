@@ -58,7 +58,7 @@ You can extend and adjust the demonstrated functionality based on your requireme
 
 - Use the [Security System](https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113361.aspx) facilities to prohibit certain users from deleting view variants.
 
-- Store the current variant in the model (see the [Extend and Customize the Application Model in Code](https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113169.aspx) topic in our documentation) or in the user object's property and apply it when the corresponding view is opened.
+- Store the current variant in the model (see the [Change the Application Model](https://docs.devexpress.com/eXpressAppFramework/403527/ui-construction/application-model-ui-settings-storage/change-application-model) topic in our documentation) or in the user object's property and apply it when the corresponding view is opened.
 
 ## Files to Review
 
