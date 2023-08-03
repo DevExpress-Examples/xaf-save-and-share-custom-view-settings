@@ -7,6 +7,7 @@ using ViewSettingsSolution.Module.BusinessObjects;
 using DevExpress.Data.Filtering;
 using DevExpress.ExpressApp.Actions;
 using DevExpress.ExpressApp.Templates;
+using DevExpress.Xpo;
 
 namespace ViewSettingsSolution.Module.Controllers {
     public class ViewVariantsController : ViewController {
@@ -57,7 +58,7 @@ namespace ViewSettingsSolution.Module.Controllers {
             View.SaveModel();
             isLayoutProcessed = false;
             store.Xml = UserDifferencesHelper.GetUserDifferences(View.Model)[""];
-            ((IObjectSpaceLink)store).ObjectSpace.CommitChanges();
+            ((UnitOfWork)store.Session).CommitChanges();
         }
         private void UpdateDefaultSettings(IModelView model) {
             defaultUserSettings = UserDifferencesHelper.GetUserDifferences(model)[""];
