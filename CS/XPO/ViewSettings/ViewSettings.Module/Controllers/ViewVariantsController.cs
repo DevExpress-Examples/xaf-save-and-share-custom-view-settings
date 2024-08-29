@@ -87,10 +87,11 @@ namespace ViewSettingsSolution.Module.Controllers {
             UpdateDefaultSettingsWithSelectedVariantAction.Active["HasVariants"] = isActive;
         }
         private void DeleteViewVariantAction_Execute(object sender, SimpleActionExecuteEventArgs e) {
-            IObjectSpaceLink currentLayoutItem = SelectViewVariantAction.SelectedItem.Data as IObjectSpaceLink;
+            SettingsStore currentLayoutItem = SelectViewVariantAction.SelectedItem.Data as SettingsStore;
             if(TryLoadViewVariantFromXML(defaultUserSettings)) {
-                IObjectSpace os = currentLayoutItem.ObjectSpace;
-                os.Delete(currentLayoutItem);
+                IObjectSpace os = Application.CreateObjectSpace(typeof(SettingsStore));
+                var currentLayoutItemInOs = os.GetObject(currentLayoutItem);
+                os.Delete(currentLayoutItemInOs);
                 os.CommitChanges();
                 isDefaultViewSelected = true;
                 UpdateActions(null);
