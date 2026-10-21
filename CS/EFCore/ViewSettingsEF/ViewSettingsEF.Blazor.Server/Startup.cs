@@ -96,6 +96,7 @@ public class Startup {
         app.UseRouting();
         app.UseAuthentication();
         app.UseAuthorization();
+        app.UseAntiforgery();
         app.UseXaf();
         app.UseEndpoints(endpoints => {
             endpoints.MapXafEndpoints();
